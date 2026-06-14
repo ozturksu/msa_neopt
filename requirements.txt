@@ -1,0 +1,12 @@
+# MSA-NeOpt dependencies
+# pip install -r requirements.txt
+
+torch>=2.0.0
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+pyarrow>=12.0.0
+
+# LP oracle (step06 evaluation)
+cvxpy>=1.3.0
+cvxopt>=1.3.0

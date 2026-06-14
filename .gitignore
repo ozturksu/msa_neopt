@@ -1,0 +1,30 @@
+# Generated data — download EirGrid CSVs and run step01
+data/
+*.npy
+*.parquet
+
+# Model checkpoints — reproduced by running steps 02-05
+models/
+*.pt
+
+# Results and figures — reproduced by step06
+results/
+figures/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# Environments
+.env
+msa_neopt_env/
+venv/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
