@@ -2,46 +2,59 @@
 
 ## Source
 
-EirGrid publishes historical Irish electricity demand at 15-minute resolution:
+EirGrid historical Irish electricity demand data at 15-minute resolution,
+downloaded using the **EirGrid Data Downloader** by Daniel Parke:
 
-**Download portal:** https://www.eirgrid.ie/grid-and-markets/market-data
+https://github.com/Daniel-Parke/EirGrid_Data_Download
 
-Free to access for academic use.
+## How to download the data
 
-## What to download
+### Step 1 — Clone the downloader
 
-Download yearly CSV files for these five signals, years 2014–2024:
+```bash
+git clone https://github.com/Daniel-Parke/EirGrid_Data_Download.git
+cd EirGrid_Data_Download
+pip install -r requirements.txt
+```
 
-| Signal | EirGrid category | Our column name |
-|--------|-----------------|----------------|
+### Step 2 — Run the downloader
+
+Follow the instructions in the EirGrid_Data_Download README to download
+the following five signal categories for years 2014 to 2024:
+
+| Signal | EirGrid category | Column in our pipeline |
+|--------|-----------------|----------------------|
 | System demand | `demandactual` | `demand_mw` |
 | Wind generation | `windactual` | `wind_mw` |
 | Total generation | `generationactual` | `generation_mw` |
 | CO2 intensity | `co2intensity` | `co2_intensity` |
 | SNSP | `SnspALL` | `snsp` |
 
-## File naming
+### Step 3 — Check the file naming
 
-Files follow the pattern `ROI_{category}_{YY}_Eirgrid.csv`:
+The downloader produces files in this format:
 
 ```
 ROI_demandactual_14_Eirgrid.csv   ← 2014 demand
-ROI_demandactual_15_Eirgrid.csv   ← 2015 demand
-...
-ROI_SnspALL_21_Eirgrid.csv        ← 2021 SNSP (not available before 2021)
+ROI_windactual_23_Eirgrid.csv     ← 2023 wind
+ROI_SnspALL_21_Eirgrid.csv        ← 2021 SNSP
 ```
 
-## Setup
+Place all downloaded CSV files in one directory, for example:
 
-1. Place all downloaded CSV files in one folder, e.g. `/Users/yourname/eirgrid_data/`
+```
+/Users/yourname/eirgrid_data/
+```
 
-2. Update `RAW_DIR` at the top of `scripts/step01_prepare_data.py`:
+### Step 4 — Update the pipeline path
+
+Open `scripts/step01_prepare_data.py` and update `RAW_DIR`:
 
 ```python
 RAW_DIR = Path("/Users/yourname/eirgrid_data/")
 ```
 
-3. Run:
+### Step 5 — Run the data pipeline
 
 ```bash
 python scripts/step01_prepare_data.py
@@ -49,21 +62,21 @@ python scripts/step01_prepare_data.py
 
 ## Output
 
-Step01 produces these files in `data/`:
+Step01 saves these files to `data/`:
 
 ```
-X_train.npy   [22848, 672, 19]   7-day input windows, training set
+X_train.npy   [22848, 672, 19]   7-day input windows — training set
 X_val.npy     [4288,  672, 19]   validation set
 X_test.npy    [4288,  672, 19]   test set (2023, held out)
 y_train.npy   [22848, 96]        next-day demand targets
 y_val.npy     [4288,  96]
 y_test.npy    [4288,  96]
-normalisation_stats.csv           min/max per feature from training set
-eirgrid_raw.parquet               merged raw signals (cache)
+normalisation_stats.csv           min/max per feature from training set only
+eirgrid_raw.parquet               cached merged signals (speeds up re-runs)
 ```
 
 ## Notes
 
-- SNSP data was not published before 2021 — automatically zero-filled for earlier years
-- Training: 2014–~2021 | Validation: ~2022 | Test: ~2023
-- All normalisation uses training-set statistics only (no data leakage)
+- SNSP data was not published by EirGrid before 2021 — automatically zero-filled for earlier years
+- Split: Train 2014–2021 | Validation 2022 | Test 2023
+- Normalisation uses training-set statistics only — no data leakage into validation or test
