@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 step03_train_neopt.py
-MSA-NeOpt — NeOpt DFL baseline (Kim et al. 2025, Section III-A)
-Built from paper specification (no public repo exists).
+MSA-NeOpt — NeOpt DFL baseline (Kim et al. 2025, Section III-A).
 
 Architecture:
   - PatchTST-style patch embedding: patch_len=16, stride=8
