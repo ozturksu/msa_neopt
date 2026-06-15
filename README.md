@@ -93,7 +93,7 @@ Expected output:
 
 See [DATA.md](DATA.md) for full instructions.
 
-Download from: https://www.eirgrid.ie/grid-and-markets/market-data
+Download from: https://github.com/Daniel-Parke/EirGrid_Data_Download
 
 Update `RAW_DIR` in `step01_prepare_data.py` to point to your data folder.
 
@@ -120,7 +120,7 @@ All code traces to published sources with documented changes:
 |-----------|--------|---------|
 | SPO+ loss | [PredOpt/predopt-benchmarks](https://github.com/PredOpt/predopt-benchmarks) `Energy/Trainer/diff_layer.py` | FIX-1: normalised forward; FIX-2: negated backward sign; solver arg removed |
 | MultiDeT | [wangc1073/multidet](https://github.com/wangc1073/multidet) Wang et al. 2022 | 13→19 features; seq_len 72→672; single decoder head |
-| KimBackbone | Kim et al. (2025) Section III-A Eqs (3)–(5) — no public repo | Implemented from paper spec; patch_len=16, stride=8, d_model=128 |
+| KimBackbone | Kim et al. (2025) Section III-A Eqs (3)–(5) | paper spec; patch_len=16, stride=8, d_model=128 |
 | MSABlock | Debnath et al. (2026) Figure 1 — Keras .h5 only | LSTM removed; PyTorch port; cross-scale MultiheadAttention added |
 | LP solver | Kim et al. (2025) Equations 7–14 | Implemented using cvxpy + GLPK |
 
