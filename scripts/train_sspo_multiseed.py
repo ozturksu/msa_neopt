@@ -3,11 +3,6 @@
 train_sspo_multiseed.py
 SSPO ablation (KimBackbone + surrogate loss) across 3 seeds.
 
-ASSUMPTION FLAG: imports sspo_loss from step04_train_sspo.py using a
-name based on an earlier reconstruction, not verified directly against
-your real file. If imports fail, check the exact function name in your
-real step04_train_sspo.py.
-
 Per supervisor feedback:
   - Full per-epoch timing + metrics logged
   - Resumable: skips any seed whose checkpoint already exists
