@@ -17,12 +17,6 @@ PTO uses MSE loss only, no DFL phase, so there is only one training
 loop here (not the two-phase warmup+DFL schedule used by the other
 four models).
 
-ASSUMPTION FLAG: this imports from step02_train_pto.py using function
-and class names based on an earlier reconstruction, not verified
-directly against your real file the way step03 was. If imports fail,
-check the exact names in your real step02_train_pto.py and adjust the
-import line below accordingly.
-
 Output:
   models/multiseed/pto_seed{N}_best.pt
   results/multiseed/pto_seed{N}_epochlog.csv
