@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 train_msa_neopt_multiseed.py
-MSA-NeOpt (MSABlock + SPO+) across 5 random seeds, own process.
+MSA-NeOpt (MSABlock + SPO+) across 3 random seeds, own process.
 
 ASSUMPTION FLAG: imports MSABlock from step05_train_msa_neopt.py using
 names based on an earlier reconstruction, not verified directly against
