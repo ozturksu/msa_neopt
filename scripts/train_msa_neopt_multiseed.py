@@ -3,11 +3,6 @@
 train_msa_neopt_multiseed.py
 MSA-NeOpt (MSABlock + SPO+) across 3 random seeds, own process.
 
-ASSUMPTION FLAG: imports MSABlock from step05_train_msa_neopt.py using
-names based on an earlier reconstruction, not verified directly against
-your real file. If imports fail, check the exact names in your real
-step05_train_msa_neopt.py.
-
 Per supervisor feedback:
   - Full per-epoch timing + metrics logged
   - Resumable: skips any seed whose checkpoint already exists
