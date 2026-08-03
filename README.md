@@ -78,10 +78,9 @@ Expected output:
 ✓ NCE loss (PredOpt CacheLosses.py — unchanged)
 ✓ MultiDeT (wangc1073/multidet — PTO baseline, adapted dims)
 ✓ PatchTST backbone (yuqinie98/PatchTST — configured per Kim et al. 2025)
-✓ GRUBackbone (PyTorch nn.GRU per Cho et al. 2014 — standard 2-layer GRU)
 ✓ MSABlock (original design — motivated by Debnath 2026 and Sajjad 2020, not a port)
 ✓ LP solver (Kim 2025 Eqs 7-14 — cvxpy + GLPK)
-8/8 passed
+7/7 passed
 ```
 
 **Step 3 — Get EirGrid data**
